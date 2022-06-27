@@ -430,6 +430,9 @@ export function menuClose() {
 	bodyUnlock();
 	document.documentElement.classList.remove("menu-open");
 }
+
+
+
 // Модуль "показать еще" =======================================================================================================================================================================================================================
 /*
 Документация по работе в шаблоне: https://template.fls.guru/template-docs/modul-pokazat-eshhjo.html
@@ -629,5 +632,33 @@ export function dataMediaQueries(array, dataSetValue) {
 			return mdQueriesArray;
 		}
 	}
+
+}
+
+window.onload = function () {
+	document.addEventListener("click", documentActions);
+
+	function documentActions(e) {
+		const targetElement = e.target;
+		if (targetElement.classList.contains('search-form__icon')) {
+			document.querySelector('.search__form').classList.toggle('_active');
+		}
+		
+
+		
+		else if (!targetElement.closest('.search__form') && document.querySelector('.search__form._active')) {
+			document.querySelector('.search__form').classList.remove('_active');
+
+		 }
+	}
+}
+
+const iconMenu = document.querySelector('.icon-menu');
+if (iconMenu) {
+	const menuBody = document.querySelector('.menu__body');
+	      iconMenu.addEventListener("click", function (e) {
+			
+			menuBody.classList.toggle('_active');
+	});
 }
 //================================================================================================================================================================================================================================================================================================================
